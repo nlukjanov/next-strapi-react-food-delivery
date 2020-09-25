@@ -1,0 +1,19 @@
+{
+  "name": "strapi-next-food-delivery-front",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "next": "^9.5.3",
+    "react-dom": "^16.13.1",
+    "react": "^16.13.1"
+  },
+  "scripts": {
+    "dev": "next",
+    "build": "next build",
+    "start": "next start"
+  },
+  "devDependencies": {},
+  "author": "",
+  "license": "ISC"
+}
