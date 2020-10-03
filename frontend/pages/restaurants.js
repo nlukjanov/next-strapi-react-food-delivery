@@ -41,7 +41,6 @@ function Restaurants(props) {
   if (loading) return <h1>Loading ...</h1>;
   if (data.restaurant) {
     const { restaurant } = data;
-    console.log(restaurant)
     return (
       <>
         <h1>{restaurant.name}</h1>
