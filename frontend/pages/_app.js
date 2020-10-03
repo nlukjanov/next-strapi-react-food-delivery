@@ -1,6 +1,8 @@
 import Head from 'next/head';
 import Layout from '../components/Layout';
 
+import withData from '../lib/apollo';
+
 const App = ({ Component, pageProps }) => {
   return (
     <>
@@ -20,4 +22,4 @@ const App = ({ Component, pageProps }) => {
   );
 };
 
-export default App;
+export default withData(App);
