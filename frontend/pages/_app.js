@@ -1,3 +1,4 @@
+import React from 'react';
 import { useState, useEffect } from 'react';
 import Head from 'next/head';
 import Layout from '../components/Layout';
@@ -44,7 +45,7 @@ const App = ({ Component, pageProps }) => {
   }, [cart]);
 
   const addItem = (item) => {
-    let { items } = cart;
+    const { items } = cart;
     const newItem = items.find((i) => i.id === item.id);
     if (!newItem) {
       item.quantity = 1;
@@ -54,7 +55,7 @@ const App = ({ Component, pageProps }) => {
   };
 
   const removeItem = (item) => {
-    let { items } = this.state.cart;
+    const { items } = cart;
     const newItem = items.find((i) => i.id === item.id);
     if (newItem.quantity > 1) {
       setCart({

@@ -13,7 +13,7 @@ import {
 import { login } from '../lib/auth';
 import AppContext from '../context/AppContext';
 
-function Login(props) {
+function Login() {
   const [data, updateData] = useState({ identifier: '', password: '' });
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);

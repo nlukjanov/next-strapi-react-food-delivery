@@ -26,7 +26,7 @@
     "key-spacing": ["error", { "beforeColon": false }],
     "no-console": "off",
     "no-fallthrough": "warn",
-    "prefer-const": "error",
+    "prefer-const": ["error", { "destructuring": "any" }],
     "quotes": ["error", "single"],
     "semi": ["error", "always"],
     "react/prop-types": [0]

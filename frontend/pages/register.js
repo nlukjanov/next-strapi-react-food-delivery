@@ -19,7 +19,7 @@ const Register = () => {
   const [error, setError] = useState({});
   const appContext = useContext(AppContext);
 
-  const registerUser = () => {
+  const registerSubmit = () => {
     setLoading(true);
     registerUser(data.username, data.email, data.password)
       .then((res) => {
@@ -103,7 +103,7 @@ const Register = () => {
                       style={{ float: 'right', width: 120 }}
                       color='primary'
                       disabled={loading}
-                      onClick={() => registerUser()}
+                      onClick={() => registerSubmit()}
                     >
                       {loading ? 'Loading..' : 'Submit'}
                     </Button>
