@@ -1,10 +1,13 @@
+import React, { useContext } from 'react';
 import Head from 'next/head';
 import Link from 'next/link';
-
 import { Container, Nav, NavItem } from 'reactstrap';
+import { logout } from '../lib/auth';
+import AppContext from '../context/AppContext';
 
 const Layout = (props) => {
   const title = 'Welcome to Nextjs';
+  const { user, setUser } = useContext(AppContext);
   return (
     <div>
       <Head>
@@ -25,6 +28,10 @@ const Layout = (props) => {
             a {
               color: white;
             }
+            h5 {
+              color: white;
+              padding-top: 11px;
+            }
           `}
         </style>
         <Nav className='navbar navbar-dark bg-dark'>
@@ -35,15 +42,32 @@ const Layout = (props) => {
           </NavItem>
 
           <NavItem className='ml-auto'>
-            <Link href='/login'>
-              <a className='nav-link'>Sign In</a>
-            </Link>
+            {user ? (
+              <h5>{user.username}</h5>
+            ) : (
+              <Link href='/register'>
+                <a className='nav-link'> Sign up</a>
+              </Link>
+            )}
           </NavItem>
-
           <NavItem>
-            <Link href='/register'>
-              <a className='nav-link'> Sign Up</a>
-            </Link>
+            {user ? (
+              <Link href='/'>
+                <a
+                  className='nav-link'
+                  onClick={() => {
+                    logout();
+                    setUser(null);
+                  }}
+                >
+                  Logout
+                </a>
+              </Link>
+            ) : (
+              <Link href='/login'>
+                <a className='nav-link'>Sign in</a>
+              </Link>
+            )}
           </NavItem>
         </Nav>
       </header>
