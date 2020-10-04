@@ -3,6 +3,7 @@ import Router from "next/router";
 import Cookie from "js-cookie";
 import axios from "axios";
 
+const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:1337";
 
 export const registerUser = (username, email, password) => {
   if (typeof window === "undefined") {
