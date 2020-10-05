@@ -96,6 +96,11 @@ function Restaurants() {
               </Card>
             </Col>
           ))}
+          <Col xs='3' style={{ padding: 0 }}>
+            <div>
+              <Cart />
+            </div>
+          </Col>
         </Row>
       </>
     );
