@@ -107,7 +107,6 @@ function Cart() {
               <h5>Login to Order</h5>
             )}
           </div>
-          {console.log(router.pathname)}
         </CardBody>
       </Card>
       <style jsx>{`

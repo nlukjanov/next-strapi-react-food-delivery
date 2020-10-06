@@ -41,16 +41,31 @@ const App = ({ Component, pageProps }) => {
   }, [token]);
 
   useEffect(() => {
-    Cookie.set('cart', cart);
+    console.log('cart runnin on update', cart)
+    Cookie.set('cart', JSON.stringify(cart));
   }, [cart]);
 
   const addItem = (item) => {
+    console.log('addItem', addItem);
     const { items } = cart;
+    console.log(items);
+    console.log(item);
     const newItem = items.find((i) => i.id === item.id);
+    console.log(newItem);
     if (!newItem) {
+      console.log('new item');
       item.quantity = 1;
       console.log(cart.total, item.price);
       setCart({ items: [...items, item], total: cart.total + item.price });
+    } else {
+      setCart({
+        items: cart.items.map((item) =>
+          item.id === newItem.id
+            ? Object.assign({}, item, { quantity: item.quantity + 1 })
+            : item
+        ),
+        total: cart.total + item.price,
+      });
     }
   };
 
@@ -59,19 +74,19 @@ const App = ({ Component, pageProps }) => {
     const newItem = items.find((i) => i.id === item.id);
     if (newItem.quantity > 1) {
       setCart({
-        items: this.state.cart.items.map((item) =>
+        items: cart.items.map((item) =>
           item.id === newItem.id
             ? Object.assign({}, item, { quantity: item.quantity - 1 })
             : item
         ),
-        total: this.state.cart.total - item.price,
+        total: cart.total - item.price,
       });
     } else {
-      const items = [...this.state.cart.items];
+      const items = [...cart.items];
       const index = items.findIndex((i) => i.id === newItem.id);
 
       items.splice(index, 1);
-      setCart({ items: items, total: this.state.cart.total - item.price });
+      setCart({ items: items, total: cart.total - item.price });
     }
   };
   return (

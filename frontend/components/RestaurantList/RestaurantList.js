@@ -1,3 +1,4 @@
+import React from 'react';
 import { useQuery } from '@apollo/react-hooks';
 import { gql } from 'apollo-boost';
 
@@ -36,7 +37,7 @@ const RestaurantList = (props) => {
       query.name.toLowerCase().includes(props.search)
     );
 
-    if (searchQuery.length != 0) {
+    if (searchQuery.length !== 0) {
       return (
         <Row>
           {searchQuery.map((res) => (
